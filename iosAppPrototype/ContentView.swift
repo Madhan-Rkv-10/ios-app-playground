@@ -8,87 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var  tapCount=0
-    @State private var name = ""
-    
-    
-    let students = ["Harry", "Hermione", "Ron"]
-      @State private var selectedStudent = "Harry"
-    
-    
 
+    @State private var checkAmount = 0.0
+    @State private var numberOfPeople = 2
+    @State private var tipPercentage = 20
     var body: some View {
         
-        
-        
-        NavigationStack(){
-
-            
-            
-            
-            Button("Tap Count  \(tapCount)"){
+        Form {
+            Section {
+                TextField("Amount", value:$checkAmount,format: .currency(code: Locale.current.currency?.identifier ?? "INR")) .keyboardType(.decimalPad)
                 
-                tapCount+=1
             }
-            
-           
-            
-
-                
-                Form(){
-                    
-                    
-                    Section(){
-                        
-                        Picker("Select your student", selection: $selectedStudent) {
-                                          ForEach(students, id: \.self) {// here backslash self represents Unique element id
-                                              Text($0)
-                                          }
-                                      }
-
-                    }
-                    
-                    TextField("Enter your name", text: $name) // $ is two way binding we can write as well as read
-                    Text("Your Name is \(name)") // here without dollar we want o read only
-               
-                    
-                  
-                    Section(){
-                        
-                        
-                        Text("Enter YourName")
-                        Text("Enter YourName")
-                        Text("Enter YourName")
-                    }
-                    Section(){
-                        
-                        Text("Enter YourName")
-                        Text("Enter YourName")
-                        Text("Enter YourName")
-                    }
-                    
-                      Section(){
-                          
-                          
-                          Text("Enter YourName")
-                          Text("Enter YourName")
-                          Text("Enter YourName")
-                      }
-                      Section(){
-                          
-                          Text("Enter YourName")
-                          Text("Enter YourName")
-                          Text("Enter YourName")
-                      }
-                  
-                }.navigationTitle("Madhan") // Apply to inner child
-                .navigationBarTitleDisplayMode(.inline)
-       
-            
         }
-      
-       
-       
+   
     }
 }
 
